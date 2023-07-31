@@ -1,23 +1,21 @@
 import React from 'react';
-import {Routes, Route } from 'react-router-dom';
-import HomePage from './view/HomePage';
-import Navbar from "./view/NavBar"
-import WordAdd from "./view/WordAdd";
-import WordList from "./view/WordList";
+import Tabs from "./view/Tabs";
+import './view/bootstrap/dist/css/bootstrap.css'
+import Background from './images/login-mobileheader-bg.jpg'
 
 function App() {
     return (
         <>
-            <Navbar />
-            <div className="container">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/add-word" element={<WordAdd />} />
-                    <Route path="/show-list" element={<WordList/>} />
-
-                </Routes>
+            <nav style={{paddingTop:0,paddingBottom:0}} className="navbar bg-body-tertiary">
+                <div style={{backgroundImage:`url(${Background})`,height:80}} className="container-fluid">
+                    <a style={{fontSize:38,fontFamily:'American Typewriter'}} className="navbar-brand" href="#">
+                            MAYA-DICT
+                    </a>
+                </div>
+            </nav>
+            <div className="App">
+                <Tabs/>
             </div>
-
         </>
 
     );

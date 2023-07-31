@@ -1,8 +1,7 @@
-/* HomePage.css */
 
 .word-btn {
-    border: 2px solid #8da19b;
-    background-color: #a2e8d7;
+    border: 2px solid #17336b;
+    background-color: #fff34b;
     padding: 10px;
     font-size: 18px;
     display: flex;
@@ -10,33 +9,24 @@
     align-items: flex-start;
 }
 
-.word-meaning {
-    border: 2px solid #2ce5b3;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0.5, 0.3, 0.5, 0.5);
-    border-radius: 1px; /* Köşe yuvarlanmasını kaldırarak çerçeveyi kare yapın */
-    width: 500px;
-    height: 300px;/* Örnek bir genişlik değeri, ihtiyaca göre değiştirilebilir */
-}
-
-/* Ana konteyner için stil ayarları */
 .container1 {
     display: flex;
     justify-content: center;
-    height: 100vh;
 }
-
+.word-break {
+    word-break: break-all;
+}
 
 .word-meaning {
-    background-color: white;
     font-size: 18px;
-    margin-top: 20px; /* Yukarıdan 20px boşluk bırakmak için margin-top ekledik */
-    display: flex; /* Flexbox özelliğini etkinleştirin */
-    flex-direction: row; /* İçerikleri yatayda sıralamak için flex-direction'ı row olarak ayarlayın */
-    align-items: center; /* İçeriği dikeyde ortalamak için align-items'ı center olarak ayarlayın */
-    position: fixed; /* Kutunun sabit konumda kalmasını sağlar */
-    top: 50%; /* Kutunun dikeyde ortalanmasını sağlar */
-    left: 50%; /* Kutunun yatayda ortalanmasını sağlar */
-    transform: translate(-50%, -50%);
-    /* Kutunun tam ortada kalmasını sağlar */
+    position: relative;
+
 }
+.ow-anywhere {
+    overflow-wrap: anywhere;
+}
+
+.ow-break-word {
+    overflow-wrap: break-word;
+}
+

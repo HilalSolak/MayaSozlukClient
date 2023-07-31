@@ -11,7 +11,7 @@ function addWordToDb(event, setWarning) {
         return;
     }
 
-    axios.post("http://localhost:8080/api/words/screen", { mayaWord: mayaWord ,meaning: meaning})
+    axios.post("http://localhost:8080/api/words/screen", { mayaWord: mayaWord ,meaning: meaning ,title:"BI"})
         .then(res => {
             console.log(res.data);
             if (res.status === 201) {
@@ -33,14 +33,14 @@ function WordAdd() {
                 <h1>Kelime Ekle</h1>
                 <form onSubmit={(event) => addWordToDb(event, setWarning)}>
                     <label>
-                        Kelime adı:
-                        <input type="text" name="mayaWord" />
+                        <input type="text" className="form-control" name="mayaWord" placeholder="Kelime"
+                               aria-describedby="basic-addon1"/>
                     </label>
                     <label>
-                        Anlamı:
-                        <input type="text" name="meaning" />
+                        <input style={{marginLeft:10}} type="text" className="form-control" name="meaning" placeholder="Anlamı"
+                               aria-describedby="basic-addon1"/>
                     </label>
-                    <input type="submit" value="Ekle" />
+                    <button style={{marginLeft:20, marginBottom:5}} type="submit" className="btn btn-primary" value="Ekle">EKLE</button>
                 </form>
                 {warning && <p>{warning}</p>}
             </div>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import './HomePage.css';
+import './bootstrap/dist/css/bootstrap.css'
 
 async function getFilteredWords(searchText) {
     const filteredWords = await axios.get(`http://localhost:8080/api/words/screen/filter?filter=${searchText}`)
@@ -13,26 +14,27 @@ function addWordToUl(data, onWordClick) {
     wordListElement.innerHTML = "";
     console.log(data)
     for (let i = 0; i < data.length; i++) {
-                const word = data[i];
+        const word = data[i];
 
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `<button class="word-btn" > ${word.mayaWord}</button>`;
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<button class="btn btn-outline-warning" > ${word.mayaWord}</button>`;
 
-                listItem.querySelector(".word-btn ").addEventListener("click", () => {
-                    async function increaseWordSearchCount(mayaWord) {
-                        try {
-                            await axios.put(`http://localhost:8080/api/words/screen/increase/${(mayaWord)}`);
-                        } catch (error) {
-                            console.error("Error:", error);
-                        }
-                    }
-                    onWordClick(word.meaning);
-                    increaseWordSearchCount(word.mayaWord);
-
-                });
-
-                wordListElement.appendChild(listItem);
+        listItem.querySelector(".btn-outline-warning ").addEventListener("click", () => {
+            async function increaseWordSearchCount(mayaWord) {
+                try {
+                    await axios.put(`http://localhost:8080/api/words/screen/increase/${(mayaWord)}`);
+                } catch (error) {
+                    console.error("Error:", error);
+                }
             }
+
+            onWordClick(word.meaning);
+            increaseWordSearchCount(word.mayaWord);
+
+        });
+
+        wordListElement.appendChild(listItem);
+    }
 
 
 }
@@ -62,27 +64,29 @@ function WordList() {
     }
 
     return (
+
         <>
             <div>
+
                 <h1>Kelime Listele</h1>
                 <form onSubmit={showWords}>
-                    <label>ARA: </label>
-                    <input type="text" name="searchWord" />
-                    <input type="submit" value="ara" />
+                    <input type="text" className="form-control" name="searchWord" placeholder="Kelime ara"
+                           aria-describedby="basic-addon1"/>
+                    <button style={{marginTop:10}} type="submit" className="btn btn-primary" value="ara">ARA</button>
                 </form>
             </div>
 
-            <div>
-                <h2 style={{textAlign:'left'}}>Words</h2>
+            <div style={{height:120}}>
+                <h2 style={{textAlign: 'left'}}>Kelimeler</h2>
 
                 <ul id="wordList"></ul>
             </div>
-            <div className="container1"> {/* Ana konteyner */}
-            <div>
-                <p className="word-meaning">{wordMeaning}</p>
-            </div></div>
+            <div className="container1">
+                <div className="word-break">
+                    <p className="word-meaning">{wordMeaning}</p>
+                </div>
+            </div>
         </>
-    );
+);
 }
-
 export default WordList;
