@@ -17,9 +17,9 @@ function addWordToUl(data, onWordClick) {
         const word = data[i];
 
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<button class="btn btn-outline-warning" > ${word.mayaWord}</button>`;
+        listItem.innerHTML = `<button style="background-color: #80808013; color:black;" onmouseover="this.style.backgroundColor='#fddb00'" onmouseout="this.style.backgroundColor='#80808013'" class="btn btn-outline-secondary"" > ${word.mayaWord}</button>`;
 
-        listItem.querySelector(".btn-outline-warning ").addEventListener("click", () => {
+        listItem.querySelector(".btn-outline-secondary ").addEventListener("click", () => {
             async function increaseWordSearchCount(mayaWord) {
                 try {
                     await axios.put(`http://localhost:8080/api/words/screen/increase/${(mayaWord)}`);
@@ -68,23 +68,19 @@ function WordList() {
         <>
             <div>
 
-                <h1>Kelime Listele</h1>
                 <form onSubmit={showWords}>
                     <input type="text" className="form-control" name="searchWord" placeholder="Kelime ara"
                            aria-describedby="basic-addon1"/>
-                    <button style={{marginTop:10}} type="submit" className="btn btn-primary" value="ara">ARA</button>
+                    <button style={{marginTop:10, marginBottom:10}} type="submit" className="btn btn-primary" value="ara">ARA</button>
                 </form>
             </div>
 
-            <div style={{height:120}}>
-                <h2 style={{textAlign: 'left'}}>Kelimeler</h2>
+            <div style={{height:0}}>
 
                 <ul id="wordList"></ul>
             </div>
             <div className="container1">
-                <div className="word-break">
                     <p className="word-meaning">{wordMeaning}</p>
-                </div>
             </div>
         </>
 );
