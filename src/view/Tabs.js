@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../App.css"
 import WordAdd from "./WordAdd";
 import WordList from "./WordList";
+import MeaningRequest from "./MeaningRequest";
 
 function Tabs() {
     const [toggleState, setToggleState] = useState(1);
@@ -17,13 +18,19 @@ function Tabs() {
                     className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
                     onClick={() => toggleTab(1)}
                 >
-                    Word List
+                    Kelime Listesi
                 </button>
                 <button
                     className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
                     onClick={() => toggleTab(2)}
                 >
-                    Word Add
+                    Kelime Ekle
+                </button>
+                <button
+                    className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
+                    onClick={() => toggleTab(3)}
+                >
+                    Açıklama Talebi
                 </button>
             </div>
 
@@ -32,13 +39,18 @@ function Tabs() {
                     className={toggleState === 1 ? "content  active-content" : "content"}
                     style={{ overflowY: "auto", maxHeight: "600px" }}
                 >
-                    {toggleState == 1 ? <WordList/> : ""}
+                    {toggleState === 1 ? <WordList/> : ""}
                 </div>
 
                 <div
                     className={toggleState === 2 ? "content  active-content" : "content"}
                 >
-                    {toggleState == 2 ? <WordAdd/> : ""}
+                    {toggleState === 2 ? <WordAdd/> : ""}
+                </div>
+                <div
+                    className={toggleState === 3 ? "content  active-content" : "content"}
+                >
+                    {toggleState === 3 ? <MeaningRequest/> : ""}
                 </div>
             </div>
         </div>
