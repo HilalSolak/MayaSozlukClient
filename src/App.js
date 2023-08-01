@@ -9,7 +9,7 @@ function App() {
             <nav style={{paddingTop:0,paddingBottom:0}} className="navbar bg-body-tertiary">
                 <div style={{backgroundImage:`url(${Background})`,height:80}} className="container-fluid">
                     <a style={{fontSize:38,fontFamily:'American Typewriter'}} className="navbar-brand" href="#">
-                            MAYA-DICT
+                            MAYA-SOZLUK
                     </a>
                 </div>
             </nav>
